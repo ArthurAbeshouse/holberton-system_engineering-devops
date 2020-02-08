@@ -3,7 +3,7 @@
 File=holbertonschool
 if [[ -a "$File" ]];
 then
-    echo "$File file exist"
+    echo "$File file exists"
 else
     echo "$File file does not exist"
     if [[ -s "$File" ]];
