@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Gives you information about the holbertonschool file
 File=holbertonschool
-if [[! -a "$File" ]];
+if [[! -a "$File" ]]
 then
     echo "$File file does not exist"
 else
     echo "$File file exists"
-    if [[ -s "$File" ]];
+    if [[ -s "$File" ]]
     then
 	echo "$File file is not empty"
     else
 	echo "$File file is empty"
     fi
-    if [[ -f "$File" ]];
+    if [[ -f "$File" ]]
     then
 	echo "$File is a regular file"
     fi
