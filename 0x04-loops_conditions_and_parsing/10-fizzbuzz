@@ -1,1 +1,17 @@
 #!/usr/bin/env bash
+# Displays Fizzbuzz
+for ((n=1;n<=100;n++))
+do
+    if ! ((n%15))
+    then
+	echo "FizzBuzz"
+    elif ! ((n%3))
+    then
+	echo "Fizz"
+    elif ! ((n%5))
+    then
+	echo "Buzz"
+    else
+	echo "$n"
+    fi
+done
