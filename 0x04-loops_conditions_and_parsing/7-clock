@@ -10,5 +10,6 @@ do
 	echo "$minutes"
 	((minutes++))
     done
+    minutes=1
     ((hours++))
 done
