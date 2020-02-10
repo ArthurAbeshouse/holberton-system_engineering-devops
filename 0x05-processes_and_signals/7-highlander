@@ -1,1 +1,10 @@
 #!/usr/bin/env bash
+# Displays "To infinity and beyond" indefinitely.
+# If the user cancels the program it will display
+# a message.
+trap "echo I am invincible!!!" SIGTERM
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
