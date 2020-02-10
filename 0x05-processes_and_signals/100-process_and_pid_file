@@ -1,1 +1,14 @@
 #!/usr/bin/env bash
+# Displays "To infinity and beyond" indefinitely.
+# If the user cancels the program it will display
+# a message. It can create a file with it's pid,
+# unless you send it a SIGQUIT.
+echo "$$" > /var/run/holbertonscript.pid
+trap "echo I hate the kill command; rm /var/run/holbertonscript.pid; exit" SIGTERM
+trap "echo Y U no love me?!" SIGINT
+trap "rm /var/run/holbertonscript.pid; exit" SIGQUIT
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
