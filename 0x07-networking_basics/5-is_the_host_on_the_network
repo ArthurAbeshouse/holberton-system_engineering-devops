@@ -1,1 +1,8 @@
 #!/usr/bin/env bash
+# pings an IP address
+if [ $# -eq 0] # checks if input is equal to 0
+then
+    ping -c 5 "$1" # pings the IP 5 times
+else
+   echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}" # displays message if no arguments are passed
+fi
