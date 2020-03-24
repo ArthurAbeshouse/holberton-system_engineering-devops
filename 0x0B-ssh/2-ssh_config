@@ -1,1 +1,4 @@
-#!/usr/bin/env bash
+# Configuration file
+Host *
+     IdentifyFile ~/.ssh/holberton
+     PasswordAuthentication no
