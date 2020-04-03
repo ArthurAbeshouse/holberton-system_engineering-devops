@@ -7,3 +7,4 @@ sudo sed -i "s|server_name\ _;|server_name _;\n\trewrite ^/redirect_me/ https://
 sudo sed -i "32i\\\tadd_header X-Served-By \$hostname;" /etc/nginx/nginx.conf
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html
 sudo sed -i "51i\ \n\terror_page 404 /error_404.html;\n\tlocation = /error_404.html {\n\t\troot /var/www/html/;\n\t\tinternal;\n\t}\n" /etc/nginx/sites-available/default
+sudo service nginx restart 
