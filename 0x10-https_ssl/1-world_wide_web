@@ -12,6 +12,6 @@ fi
 
 for i in "${sub_domains[@]}" # loops through list of subdomains
 do
-    dig $i.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain '$i' is a "$4" record and points to "$5}'
+    dig "$i.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain "$i" is a "$4" record and points to "$5}'
 done
 
