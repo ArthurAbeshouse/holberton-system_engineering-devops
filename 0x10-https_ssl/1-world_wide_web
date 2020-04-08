@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # Configures the domain zone so that the subdomain www points to my load-balancer IP
-if [ $# -eq 1 ]
-then
-	sub_domains=("www"
-	    "lb-01"
-	    "web-01"
-	    "web-02")
+if [ $# -eq 2 ]; then
+    sub_domains=("www"
+	"lb-01"
+	"web-01"
+	"web-02")
 else
-	sub_domains=$2
+    sub_domains=$2
 fi
 
 for i in "${sub_domains[@]}" # loops through list of subdomains
