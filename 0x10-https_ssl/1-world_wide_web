@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 # Configures the domain zone so that the subdomain www points to my load-balancer IP
-# $1 = domain
-# $2 = subdomain
-if [ $# == 1 ]
+
+sub_domains=("www" "lb-01" "web-01" "web-02")
+
+SUBDOMAIN()
+{
+    for i in "${sub_domains[@]}" # loops through list of subdomains
+    do
+	echo -n "The sub domain $i"
+	dig "$i.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print " is a "$4" record and points to "$5}'
+    done
+}
+
+if [ $# == 2 ]
 then
-    dig www."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain www is a "$4" record and points to "$5}'
-    dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain lb-01 is a "$4" record and points to "$5}'
-    dig web-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain web-01 is a "$4" record and points to "$5}'
-    dig web-02."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain web-02 is a "$4" record and points to "$5}'
+    echo -n "The sub domain $2"
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print " is a "$4" record and points to "$5}'
 else
-    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain "$2" is a "$4" record and points to "$5}'
+    SUBDOMAIN "$1"
 fi
-
-
-
