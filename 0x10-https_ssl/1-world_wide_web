@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # Configures the domain zone so that the subdomain www points to my load-balancer IP
-if [ $# -eq 2 ]; then
-    sub_domains=("www"
-	"lb-01"
-	"web-01"
-	"web-02")
+# $1 = domain
+# $2 = subdomain
+if [ $# == 1 ]
+then
+    dig www."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain www is a "$4" record and points to "$5}'
+    dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain lb-01 is a "$4" record and points to "$5}'
+    dig web-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain web-01 is a "$4" record and points to "$5}'
+    dig web-02."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain web-02 is a "$4" record and points to "$5}'
 else
-    sub_domains=$2
+    dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain "$2" is a "$4" record and points to "$5}'
 fi
 
-for i in "${sub_domains[@]}" # loops through list of subdomains
-do
-    dig "$i.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print "The sub domain "$i" is a "$4" record and points to "$5}'
-done
+
 
