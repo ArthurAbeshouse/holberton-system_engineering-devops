@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Configures the domain zone so that the subdomain www points to my load-balancer IP
 
-sub_domains=("www" "lb-01" "web-01" "web-02")
+sub_domains=("www"
+    "lb-01"
+    "web-01"
+    "web-02")
 
 SUBDOMAIN()
 {
