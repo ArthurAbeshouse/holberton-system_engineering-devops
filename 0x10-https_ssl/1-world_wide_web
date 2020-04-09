@@ -4,7 +4,7 @@
 
 sub_domains=("www" "lb-01" "web-01" "web-02")
 
-SUBDOMAIN()
+sub()
 {
     for i in "${sub_domains[@]}" # loops through list of subdomains
     do
@@ -17,5 +17,5 @@ then
     echo -n "The sub domain $2"
     dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print " is a " $4 " record and points to " $5}'
 else
-    SUBDOMAIN "$1"
+    sub "$1"
 fi
