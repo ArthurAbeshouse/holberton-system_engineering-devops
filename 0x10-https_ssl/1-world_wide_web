@@ -17,5 +17,5 @@ then
     echo -n "The sub domain $2"
     dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print " is a " $4 " record and points to " $5}'
 else
-    sub "$1"
+    sub "$@"
 fi
