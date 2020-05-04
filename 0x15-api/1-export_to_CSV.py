@@ -14,7 +14,7 @@ def data():
     if not len(argv):
         return print("Invalid")
     empo_id = argv[1]
-    empo = get(empo_url + empo_id).json()
+    empo = get(empo_url + empo_id).json()["username"]
     tasks = get(tasks_url).json()
     with open(empo_id + ".csv", "w") as file:
         Task_writer = writer(
@@ -24,7 +24,7 @@ def data():
             quoting=QUOTE_ALL)
         for i in tasks:
             Task_writer.writerow(
-                [empo_id, empo["username"], i["completed"], i["title"]])
+                [empo_id, empo, i["completed"], i["title"]])
 
 
 if __name__ == "__main__":
