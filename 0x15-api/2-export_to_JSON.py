@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Exports data to json"""
+from json import dump
 from requests import get
 from sys import argv
-from json import dump
 
 
 empo_url = "https://jsonplaceholder.typicode.com/users/"
@@ -20,7 +20,6 @@ def data():
     _dict = {}
     dict_new = {str(empo_id): task_list}
     for i in tasks:
-        #        if i["userId"] == empo_id:
         _dict["task"] = i["title"]
         _dict["completed"] = i["completed"]
         _dict["username"] = empo
