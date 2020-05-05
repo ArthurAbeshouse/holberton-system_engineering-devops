@@ -15,7 +15,7 @@ def data():
     dict_new = {}
     for u in empo:
         empo_id = str(u["id"])
-        tasks = get(tasks_url + empo_id).json()
+        tasks = get(tasks_url + "?userId=" + empo_id).json()
         for i in tasks:
             task_list.append({"task": i["title"],
                               "completed": i["completed"],
