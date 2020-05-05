@@ -17,9 +17,9 @@ def data():
         empo_id = str(u["id"])
         tasks = get(tasks_url + "?userId=" + empo_id).json()
         for i in tasks:
-            task_list.append({"task": i["title"],
-                              "completed": i["completed"],
-                              "username": u["username"]})
+            task_list.append({"username": u["username"],
+                              "task": i["title"],
+                              "completed": i["completed"]})
         dict_new[empo_id] = task_list
 
     with open("todo_all_employees.json", "w") as file:
