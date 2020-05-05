@@ -20,7 +20,8 @@ def data():
             task_list.append({"username": u["username"],
                               "task": i["title"],
                               "completed": i["completed"]})
-        dict_new[empo_id] = task_list
+        dict_new[str(u)] = task_list
+#        dict_new[empo_id] = task_list
 
     with open("todo_all_employees.json", "w") as file:
         dump(dict_new, file)
