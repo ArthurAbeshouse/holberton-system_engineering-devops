@@ -5,7 +5,7 @@ from requests import get
 
 
 empo_url = "https://jsonplaceholder.typicode.com/users/"
-tasks_url = "https://jsonplaceholder.typicode.com/todos/"
+tasks_url = "https://jsonplaceholder.typicode.com/todos"
 
 
 def data():
