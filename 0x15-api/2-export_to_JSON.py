@@ -17,13 +17,11 @@ def data():
     empo = get(empo_url + empo_id).json()["username"]
     tasks = get(tasks_url).json()
     task_list = []
-    _dict = {}
-    dict_new = {str(empo_id): task_list}
+    dict_new = {empo_id: task_list}
     for i in tasks:
-        _dict["task"] = i["title"]
-        _dict["completed"] = i["completed"]
-        _dict["username"] = empo
-        task_list.append(_dict)
+        dict_new[empo_id].append({"task": i["title"],
+                                  "completed": i["completed"],
+                                  "username": empo})
     with open(empo_id + ".json", "w") as file:
         dump(dict_new, file)
 
