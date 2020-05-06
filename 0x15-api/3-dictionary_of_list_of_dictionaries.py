@@ -10,22 +10,17 @@ def data():
     """Parses data form API"""
     empo = get(empo_url).json()
     task_list = []
-#    dict_new = {}
-    user_dict = {}
-    user_name = {}
+    dict_new = {}
     for u in empo:
-        empo_id = u.get("id")
-        user_dict[empo_id] = []
-        user_name[empo_id] = u.get("username")
-    for i in get(tasks_url).json():
-        uid = i.get("userId")
-        task_list.append({"username": user_name.get(uid),
-                          "task": i.get("title"),
-                          "completed": i.get("completed")})
-#        print("uid:", uid)
-        user_dict.get(uid).append(task_list)
-    with open("todo_all_employees.json", "w") as jsonfile:
-        dump(user_dict, jsonfile)
+        empo_id = str(u.get("id"))
+        tasks = get(tasks_url + "?userId=" + empo_id).json()
+        for i in tasks:
+            task_list.append({"username": u.get("username"),
+                              "task": i.get("title"),
+                              "completed": i.get("completed")})
+        dict_new[empo_id] = task_list
+    with open("todo_all_employees.json", "w") as file:
+        dump(dict_new, file)
 
 
 if __name__ == "__main__":
