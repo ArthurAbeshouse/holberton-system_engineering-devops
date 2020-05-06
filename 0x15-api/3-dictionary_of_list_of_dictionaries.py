@@ -17,8 +17,6 @@ def data():
         empo_id = u.get("id")
         user_dict[empo_id] = []
         user_name[empo_id] = u.get("username")
-#        tasks = get(tasks_url,"{}").foarmat(empo_id).json()
-#        tasks = get(tasks_url + "?userId=" + empo_id).json()
     for i in get(tasks_url).json():
         uid = i.get("userId")
         task_list.append({"username": user_name.get(uid),
@@ -31,4 +29,3 @@ def data():
 
 if __name__ == "__main__":
     data()
-#userdict.get(uid).append(taskdict)
