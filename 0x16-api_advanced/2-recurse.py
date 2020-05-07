@@ -7,9 +7,17 @@ from requests import get
 def recurse(subreddit, hot_list=[], after=""):
     """Returns a list containing the titles
        of all the hottest articles for a given subreddit"""
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit, after)
     headers = {"User-agent": "agent_Flemming"}
-    response = get(url, headers=headers, allow_redirects=False)
+    params = {"after": after}
+    if (after is ""):
+        response = get(url, headers=headers, allow_redirects=False)
+    else:
+        response = get(
+            url,
+            headers=headers,
+            allow_redirects=False,
+            params=params)
     if (response.status_code != 200):
         return None
     else:
