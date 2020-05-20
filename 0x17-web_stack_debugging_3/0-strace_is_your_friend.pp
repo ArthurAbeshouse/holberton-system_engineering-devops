@@ -5,6 +5,6 @@ exec { 'typo-fix':
 }
 # Restart Apache2 server
 exec { 'restart-server':
-  command => "sudo service apache2 restart",
+  command => 'sudo service apache2 restart',
   path    => ['/usr/bin', '/sbin', '/bin', '/usr/sbin'],
 }
