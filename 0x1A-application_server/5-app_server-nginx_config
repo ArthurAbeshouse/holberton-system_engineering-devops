@@ -64,7 +64,7 @@ server {
 		alias /data/web_static/current/;}
 
 	location / {
-                 proxy_pass http://0.0.0.0:5003/2-hbnb;
+                 proxy_pass http://0.0.0.0:5003/2-hbnb/;
         }
 
 	location /static {
@@ -76,9 +76,6 @@ server {
 		root /var/www/html/;
 		internal;
 	}
-
-
-
 
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
