@@ -1,5 +1,5 @@
 # Fixes extension typo
-exec { 'typo-fix':
+exec { 'ulimit-fix':
   command => "sed -i 's/15/404/g' /etc/default/nginx",
   path    => ['/usr/bin', '/sbin', '/bin', '/usr/sbin'],
 }
