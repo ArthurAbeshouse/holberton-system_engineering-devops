@@ -64,14 +64,18 @@ server {
 		alias /data/web_static/current/;}
 
 	location / {
-                 proxy_pass http://0.0.0.0:5003/2-hbnb/;
+                 proxy_pass http://0.0.0.0:5003/2-hbnb;
         }
 
-	error_page 404 /error_404.html;
-	location = /error_404.html {
-		root /var/www/html/;
-		internal;
+	location /static {
+		 proxy_pass http://0.0.0.0:5003
 	}
+
+	#error_page 404 /error_404.html;
+	#location = /error_404.html {
+#		root /var/www/html/;
+#		internal;
+#	}
 
 
 
