@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Gracefully shuts down gunicorn
+pkill -HUP gunicorn
